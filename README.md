@@ -184,5 +184,6 @@ Abra um **Pull Request do seu fork para este repositório**, contendo screenshot
 Após o envio, sua solução será revisada. Feedback poderá ser fornecido antes da aprovação.
 
 ## 5. Solução de Referência
-Esse site demonstra um modelo de solução, que implementa todos os requisitos do desafio e simulando um produto real:
+Esse site demonstra um modelo de solução, que implementa todos os requisitos obrigatórios e opcionais do desafio.
+
 https://desafio-1-solution.vercel.app/
