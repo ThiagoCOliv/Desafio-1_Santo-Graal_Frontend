@@ -8,7 +8,7 @@ export function DocumentList({
   onDeleteDocument,
 }: DocumentListProps) {
   return (
-    <aside className="order-2 border border-slate-800 bg-slate-900/80 p-4 shadow-xl shadow-slate-950/10 lg:order-1">
+    <aside className="order-2 border border-slate-800 bg-slate-900/80 p-4 shadow-xl shadow-slate-950/10 lg:order-1 h-auto lg:h-full flex flex-col overflow-hidden">
       <div className="flex items-center justify-between gap-3 border-b border-slate-800 pb-3">
         <div>
           <p className="text-sm uppercase tracking-[0.25em] text-slate-500">Documentos</p>
@@ -23,7 +23,7 @@ export function DocumentList({
         </button>
       </div>
 
-      <div className="py-3 space-y-3 max-h-[520px] overflow-y-auto pr-1 flex flex-col items-stretch gap-2">
+      <div className="py-3 space-y-3 flex-1 overflow-y-auto pr-1 flex flex-col items-stretch gap-2">
         {documents.map((document) => (
           <button
             key={document.id}

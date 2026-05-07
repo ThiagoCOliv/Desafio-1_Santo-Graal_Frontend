@@ -1,4 +1,8 @@
+import type { Comment } from './Comment'
+
 export type Chapter = {
-    title: string
-    progress: string
+  title: string
+  content: string
+  finished: boolean
+  comments: Comment[]
 }
