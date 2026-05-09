@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import type { SidePanelProps } from '../models/SidePanelProps'
+import { AddButton } from './AddButton'
+import { DeleteButton } from './DeleteButton'
 
 export function SidePanel({ 
   chapters, 
@@ -40,13 +42,11 @@ export function SidePanel({
             <p className="text-sm uppercase tracking-[0.25em] text-slate-500">Capítulos</p>
             <h2 className="mt-2 text-lg font-semibold text-slate-100">Progresso do conteúdo</h2>
           </div>
-          <button
-            type="button"
+          <AddButton
             onClick={onAddChapter}
-            className="inline-flex items-center justify-center rounded-full bg-sky-500 px-4 py-2 text-sm font-bold text-slate-950 transition hover:bg-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-300"
-          >
-            +
-          </button>
+            className="pl-2 pr-1 py-1"
+            title="Adicionar capítulo"
+          />
         </div>
         <div className="py-2 space-y-3 flex flex-col gap-3 flex-1 overflow-y-auto pr-1">
           {chapters.map((chapter, index) => {
@@ -83,16 +83,14 @@ export function SidePanel({
                     >
                       {chapter.finished ? 'Concluído' : 'Pendente'}
                     </button>
-                    <button
-                      type="button"
+                    <DeleteButton
                       onClick={(e) => {
                         e.stopPropagation()
                         onRemoveChapter(index)
                       }}
-                      className="rounded-full border border-red-700 bg-red-900 px-3 py-1 text-xs font-semibold text-red-200 transition hover:bg-red-800"
-                    >
-                      Deletar
-                    </button>
+                      className="px-3 py-1"
+                      title="Remover capítulo"
+                    />
                   </div>
                 </div>
               </div>
@@ -106,16 +104,14 @@ export function SidePanel({
           <div>
             <p className="text-sm uppercase tracking-[0.25em] text-slate-500">Comentários</p>
           </div>
-          <button
-            type="button"
+          <AddButton
             onClick={handleOpenModal}
             disabled={!activeChapter}
-            className="inline-flex items-center justify-center rounded-full bg-sky-500 px-3 py-2 text-sm font-semibold text-slate-950 transition hover:bg-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-300 disabled:cursor-not-allowed disabled:bg-slate-700 disabled:text-slate-400"
-          >
-            +
-          </button>
+            className="px-3 py-2 disabled:cursor-not-allowed disabled:bg-slate-700 disabled:text-slate-400"
+            title="Adicionar comentário"
+          />
         </div>
-        <div className="mt-4 space-y-3 flex-1 overflow-y-auto pr-1">
+        <div className="mt-4 space-y-3 flex-1 overflow-y-auto pr-1 pt-4">
           {activeComments.length === 0 ? (
             <div className="rounded-3xl border border-dashed border-slate-700 bg-slate-900/60 p-6 text-center text-sm text-slate-400">
               Nenhum comentário neste capítulo.
@@ -128,16 +124,14 @@ export function SidePanel({
                     <p className="font-medium text-slate-100">{comment.author}</p>
                     <span className="text-xs uppercase tracking-[0.2em] text-slate-400">{comment.time}</span>
                   </div>
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation()
-                      onRemoveComment(index)
-                    }}
-                    className="rounded-full border border-red-700 bg-red-900 px-3 py-1 text-xs font-semibold text-red-200 transition hover:bg-red-800"
-                  >
-                    Deletar
-                  </button>
+                  <DeleteButton
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        onRemoveComment(index)
+                      }}
+                      className="px-3 py-1"
+                      title="Remover comentário"
+                    />
                 </div>
                 <p className="mt-3 text-sm leading-6 text-slate-400">{comment.text}</p>
               </article>
@@ -154,13 +148,6 @@ export function SidePanel({
                 <h3 className="text-lg font-semibold text-slate-100">Novo comentário</h3>
                 <p className="mt-1 text-sm text-slate-400">Adicione uma observação para o capítulo selecionado.</p>
               </div>
-              <button
-                type="button"
-                onClick={handleCloseModal}
-                className="rounded-full border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-300 transition hover:bg-slate-700"
-              >
-                Fechar
-              </button>
             </div>
 
             <textarea
